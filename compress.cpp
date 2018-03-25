@@ -34,7 +34,7 @@ private:
 		return ans;
 	}
 public:
-	Fileread(string s, string type) : filesize(-1), br{ 0, 0 } {
+	Fileread(string s, string type): filesize(-1), br{ 0, 0 } {
 		filename = s;
 		filetype = type;
 		f = fopen(s.c_str(), type.c_str());
@@ -53,18 +53,21 @@ public:
 		}
 	}
 	Fileread() {}
+    ~Fileread() {
+        fclose(f);
+    }
 	int get_filesize() {
 		if (filesize == -1)
 			filesize = calc_filesize();
 		return filesize;
 	}
-	int read(unsigned char *buf, int len) {
+	int read(unsigned char *buf, int len) const{
 		return fread(buf, 1, len, f);
 	}
-	int read(int *x) {
+	int read(int *x) const{
 		return fread(x, sizeof(*x), 1, f);
 	}
-	int read(long long *x) {
+	int read(long long *x) const{
 		return fread(x, sizeof(*x), 1, f);
 	}
 	int bread(int *a) {
@@ -155,10 +158,10 @@ public:
 			}
 		}
 	}
-	void write(unsigned char x) {
+	void write(unsigned char x) const{
 		fwrite(&x, sizeof(x), 1, f);
 	}
-	void write(int x) {
+	void write(int x) const{
 		fwrite(&x, sizeof(x), 1, f);
 	}
 	Filewrite() {}
@@ -213,7 +216,7 @@ public:
 	}
 	void check_overflow() {
 		if (psum[CHARSIZ] > overflo) {
-			for (int i = 1; i <= CHARSIZ; i++) { //Нулевой символ занулить
+			for (int i = 1; i <= CHARSIZ; i++) {
 				p[i] /= del;
 				if (p[i] == 0) {
 					p[i] = 1;
@@ -229,7 +232,7 @@ public:
 		}
 		check_overflow();
 	}
-	void get_borders(long long &lnew, long long &rnew, int i) {
+	void get_borders(long long &lnew, long long &rnew, int i) const{
 		long long l = lnew, r = rnew;
 		long long len = (r - l + 1);
 		lnew = l + len * psum[i - 1] / psum[CHARSIZ];
@@ -313,7 +316,7 @@ private:
 		}
 		return min_st;
 	}
-	void get_agr() {
+	void get_agr() const {
 		Fileread f = fr;
 		int n;
 		while (n = f.read(buf, bufsize)) {
