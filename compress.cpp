@@ -312,7 +312,6 @@ private:
             }
             last = size;
         }
-        cout << min_st << endl;
         return min_st;
     }
     void get_agr() {
@@ -481,12 +480,12 @@ public:
 };
 
 void compress_ari(char *ifile, char *ofile) {
-    Compressor c(ifile, ofile, 31, 1024);
+    Compressor c(ifile, ofile, 31, 512);
     c.compress();
 }
 
 void decompress_ari(string ifile, string ofile) {
-    Decompressor c(ifile, ofile, 31, 1024);
+    Decompressor c(ifile, ofile, 31, 512);
     c.decompress();
 }
 
