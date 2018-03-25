@@ -1,2 +1,2 @@
-# compressor
-Compressor and decompressor(Arithmetic coding)
+# Архиватор
+Реализация алгоритма арифметического сжатия текстовыйх файлов
