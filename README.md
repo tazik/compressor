@@ -46,11 +46,11 @@
   2. `void decompress_ari(char *ifile, char *ofile)` - функция, декодирующая файл
   
 ##### Классы:
-  1. class Fileread - Класс для чтения из бинарными файлами
-  2. class Filewrite - Класс для записи в бинарный файл
-  3. class Probability - Класс для вычисления распределения вероятности
-  4. class Compressor - Класс, реализуюший сжатие
-  5. class Decompressor - Класс, реализующий декодирование
+  1. `class Fileread` - Класс для чтения из бинарными файлами
+  2. `class Filewrite` - Класс для записи в бинарный файл
+  3. `class Probability` - Класс для вычисления распределения вероятности
+  4. `class Compressor` - Класс, реализуюший сжатие
+  5. `class Decompressor` - Класс, реализующий декодирование
  
 
  
